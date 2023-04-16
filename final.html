@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz-final.css">
+    <title>results</title>
+</head>
+<body>
+
+    <!-- AWARD & POINTS -->
+    <div class="wrapper">
+        <div class="border">
+
+            <h1 class="username"><span class="name" style="font-size: 50px; color: #fff;"></span><br>WELL DONE!</h1>
+            <p class="userpoints">Your Points: <span id="user_points" style="color: greenyellow;"></span>/100</p>
+            <p class="username">Your Username: <span id="user_name" style="color: greenyellow;"></span></p>
+            <br>
+            <div id="answers"></div>
+
+            <div id="wrv"></div>
+            <br />
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/d56261bbb9.js"></script>
+    <script>
+
+        let questions = [
+            {
+                id: 1,
+                question: "What is the Full Form Of RAM?",
+                answer: "Random Access Memory",
+                options: [
+                    "Run Accept Memory",
+                    "Random All Memory",
+                    "Random Access Memory",
+                    "None of these"
+                ]
+            },
+            {
+                id: 2,
+                question: "What is the Full-Form of CPU?",
+                answer: "Central Processing Unit",
+                options: [
+                    "Central Program Unit",
+                    "Central Processing Unit",
+                    "Central Preload Unit",
+                    "None of these"
+                ]
+            },
+            {
+                id: 3,
+                question: "What is the Full-Form of E-mail",
+                answer: "Electronic Mail",
+                options: [
+                    "Electronic Mail",
+                    "Electric Mail",
+                    "Engine Mail",
+                    "None of these"
+                ]
+            },
+            {
+                id: 4,
+                question: "'DB' in computer means?",
+                answer: "DataBase",
+                options: [
+                    "Double Byte",
+                    "Data Block",
+                    "DataBase",
+                    "None of these"
+                ]
+            },
+            {
+                id: 5,
+                question: "What is FMD?",
+                answer: "Fluorescent Multi-Layer Disc",
+                options: [
+                    "Fluorescent Multi-Layer Disc",
+                    "Flash Media Driver",
+                    "Fast-Ethernet Measuring Device",
+                    "None of these"
+                ]
+            },
+            {
+                id: 6,
+                question: "How many bits is a byte?",
+                answer: "8",
+                options: [
+                    "32",
+                    "16",
+                    "8",
+                    "64"
+                ]
+            },
+            {
+                id: 7,
+                question: "A JPG is:",
+                answer: "A format for an image file",
+                options: [
+                    "A format for an image file",
+                    "A Jumper Programmed Graphic",
+                    "A type of hard disk",
+                    "A unit of measure for memory"
+                ]
+            },
+            {
+                id: 8,
+                question: "what does html stand for?",
+                answer: "Hypertext Markup Language",
+                options: [
+                    "Hypertext Markup Language",
+                    "High-level Text Manipulation Language",
+                    "Hyperlink and Text Markup Language",
+                    "Hypermedia Text Manipulation Language"
+                ]
+            },
+            {
+                id: 9,
+                question: "Main circuit board in a computer is:",
+                answer: "Mother board",
+                options: [
+                    "Harddisk",
+                    "Mother board",
+                    "Microprocessor",
+                    "None of these"
+                ]
+            },
+            {
+                id: 10,
+                question: "ISP stands for:",
+                answer: "Internet Service Provider",
+                options: [
+                    "Internet Survey Period",
+                    "Integreted Service Provider",
+                    "Internet Security Protocol",
+                    "Internet Service Provider"
+
+                ]
+            },
+        ];
+        // Retrieve points from session storage
+        let user_points = sessionStorage.getItem("points");
+
+        // Retrieve username from session storage
+        let user_name = sessionStorage.getItem("fname");
+        let ans = sessionStorage.getItem("answers");
+        let ansar = JSON.parse(ans);
+
+        let cor = sessionStorage.getItem("correct");
+        let correctar = JSON.parse(cor);
+        // Display points and username on the page
+        document.getElementById("user_points").innerHTML = user_points;
+        document.getElementById("user_name").innerHTML = user_name;
+        /* document.getElementById("ans").innerHTML = ans;
+         document.getElementById("cor").innerHTML = cor;*/
+    </script>
+
+    <script>
+        let myDiv = document.getElementById("answers");
+        myDiv.style.width = "600px";
+        myDiv.style.background = "rgb(80, 255, 80)";
+        myDiv.style.textAlign = "center";
+        for (let i = 1; i <= 10; i++) {
+            if (questions[i - 1].options[ansar[i - 1]] == questions[i - 1].options[correctar[i - 1]])
+                myDiv.innerHTML += "<BR>" + i + ")   " + questions[i - 1].question + "<BR>" + "your answer: " + questions[i - 1].options[ansar[i - 1]] + "<BR>" + "correct answer: " + questions[i - 1].options[correctar[i - 1]] + "<br><br>";
+        }
+    </script>
+    <script>
+    let w = document.getElementById("wrv");
+    w.style.width = "600px";
+        w.style.background = "rgb(255, 40, 40)";
+    w.style.textAlign = "center";
+    for (let i = 1; i <= 10; i++) {
+    if (questions[i - 1].options[ansar[i - 1]] != questions[i - 1].options[correctar[i - 1]])
+    w.innerHTML += "<BR>" + i + ")   " + questions[i - 1].question + "<BR>" + "your answer: " + questions[i - 1].options[ansar[i - 1]] + "<BR>" + "correct answer: " + questions[i - 1].options[correctar[i - 1]] + "<br><br>";
+    }
+    </script>
+
+
+</body>
+</html>

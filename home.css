@@ -1,0 +1,23 @@
+body{
+    background-image: url(pic.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+P{
+    padding: 8px;
+}
+input[type="submit"] {
+  all: unset;
+  color: white;
+  background-color: transparent;
+  border: none;
+  padding: 0px 15px;
+  border-radius: 5px;
+}
+
+label[for="phone"], input[type="tel"], 
+label[for="fname"], input[type="text"],label[for="lname"], input[type="text"],label[for="email"], input[type="email"]   {
+  color: white;
+}
